@@ -71,7 +71,7 @@ def make_update(action, query):
     else:
         return "400 NOTAUTH %s\n" % H.to_text()
 
-    keyring, algo = read_session_key("/var/run/named/session.key")
+    keyring, algo = read_session_key("/etc/bind/keys/webapp.key")
     update = dns.update.Update(D, keyring=keyring, keyalgorithm=algo)
     if action == 'update':
        update.present(R, 'a')
